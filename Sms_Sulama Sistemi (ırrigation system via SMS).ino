@@ -8,15 +8,13 @@ int seviye2=40;
 int seviye3=60;
 int seviye4=90;
 
-String telNo="05413065471";//gelen sms i kontrol için numarayı giriyoruz
+String telNo="05*********";//gelen sms i kontrol için numarayı giriyoruz
 int i; //
 void setup()
 {
  Serial.begin(9600);
  sim800.begin(9600);
  motor.attach(4); 
- 
- // настройка приема сообщений
  
  sim800.print("AT+CMGF=1\r"); // SMS modunu text olarak ayarlıyoruz
  delay(500); // 
@@ -82,7 +80,7 @@ void loop()
  mesaj = ""; 
  } 
  
- else if ('\n' != bittiMi) { //  игнорируем второй символ в последовательности переноса строки: \r\n , и 
- mesaj += String(bittiMi); //дополняем текущую команду новым сиволом
+ else if ('\n' != bittiMi) {  
+ mesaj += String(bittiMi); 
  }
 }
